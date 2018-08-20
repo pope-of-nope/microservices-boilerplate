@@ -1,0 +1,17 @@
+{
+  "name": "facebook-listener-service",
+  "version": "0.0.1",
+  "dependencies": {
+    "async": "^2.4.0",
+    "body-parser": "^1.15.0",
+    "config": "^1.20.4",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "messenger-bot": "^2.4.0",
+    "request": "^2.72.0"
+  },
+  "engines": {
+    "node": "~4.1.2"
+  }
+}

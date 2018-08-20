@@ -1,0 +1,5 @@
+1. Initial project setup:
+    A.  chmod +x ./setup/install-docker.sh
+2. Auth Service (dummy implementation)
+3. API Gateway (simple hardcoded)
+4.

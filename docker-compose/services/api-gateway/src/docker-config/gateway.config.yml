@@ -1,0 +1,53 @@
+http:
+  port: 8080
+  hostname: '*'
+admin:
+  port: 9876
+  hostname: localhost
+apiEndpoints:
+  api:
+    host: '*'
+    paths: '/ip'
+  dummy:
+    host: '*'
+    paths: '/dummy'
+serviceEndpoints:
+  httpbin:
+    url: 'https://httpbin.org'
+  dummy:
+    url: 'http://dummy:5000'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  default:
+    apiEndpoints:
+      - api
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - log: # policy name
+          - action:    # array of condition/actions objects
+              message: ${req.method} ${req.originalUrl} # parameter for log action
+      - proxy:
+          - action:
+              serviceEndpoint: httpbin 
+              changeOrigin: true
+  dummy:
+    apiEndpoints:
+      - dummy
+    policies:
+      - log: # policy name
+          - action:    # array of condition/actions objects
+              message: ${req.method} ${req.originalUrl} # parameter for log action
+      - proxy:
+        - action:
+            serviceEndpoint: dummy
+            changeOrigin: true
+            stripPath: true

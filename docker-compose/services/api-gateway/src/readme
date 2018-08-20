@@ -1,0 +1,8 @@
+apt-get update
+apt-get install -y nodejs npm
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+npm install forever -g
+npm install
+
+# nodejs service.js
+sudo forever start service.js
