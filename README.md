@@ -47,8 +47,29 @@ Test remotely:
 >  		http://<your-hostname-or-ip-address>:8080/ip
 >  		http://<your-hostname-or-ip-address>:8080/dummy
 
+Check server logs:
+>   	$ make logs
+>>     ...
+>>     cd docker-compose && sudo docker-compose logs
+>>     Attaching to docker-compose_gateway_1, docker-compose_dummy_1
+>>     gateway_1  |
+>>     gateway_1  | > Gateway@1.0.0 start /home/node/Gateway
+>>     gateway_1  | > node server.js
+>>     gateway_1  |
+>>     gateway_1  | [EG:gateway] warn: rewrite plugin hasn't provided a schema. Validation for this plugin will be skipped.
+>>     gateway_1  | gateway http server listening on :::8080
+>>     gateway_1  | admin http server listening on 127.0.0.1:9876
+>>     dummy_1    | [2018-08-20 18:14:10 +0000] [1] [INFO] Starting gunicorn 19.9.0
+>>     dummy_1    | [2018-08-20 18:14:10 +0000] [1] [INFO] Listening at: http://192.168.48.2:5000 (1)
+>>     dummy_1    | [2018-08-20 18:14:10 +0000] [1] [INFO] Using worker: sync
+>>     dummy_1    | [2018-08-20 18:14:10 +0000] [10] [INFO] Booting worker with pid: 10
+>>     dummy_1    | [2018-08-20 18:14:10 +0000] [11] [INFO] Booting worker with pid: 11
+>>     dummy_1    | [2018-08-20 18:14:10 +0000] [12] [INFO] Booting worker with pid: 12
+>>     dummy_1    | [2018-08-20 18:14:10 +0000] [13] [INFO] Booting worker with pid: 13
+
 Stop the server:
->			$ make stop
+>   	$ make stop
+>>     ...
 >>     cd docker-compose && sudo docker-compose down
 >>     Stopping docker-compose_dummy_1   ... done
 >>     Stopping docker-compose_gateway_1 ... done
