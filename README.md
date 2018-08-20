@@ -11,8 +11,7 @@ Install docker and docker-compose (if not already installed):
 
 Start the server:
 >   	$ make start
-
->     Result:
+>>     ...
 >>     cd docker-compose && sudo docker-compose build > build.out && rm build.out
 >>     Building gateway
 >>     Building dummy
