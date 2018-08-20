@@ -1,0 +1,3 @@
+.idea
+docker-compose/services/api-gateway/src/Gateway/node_modules
+
