@@ -78,8 +78,12 @@ Stop the server:
 >>     Removing network docker-compose_main
 
 # Technologies involved:
-Docker - a technology for managing virtual machines. Terms: container = VM; image = the initial state of the container before it's run; Dockerfile = a file that defines the image; Volume = a directory on the host OS which can be exposed to containers (without including it in the docker image.)
+Docker - a technology for managing virtual machines. Terms: container = VM; image = the initial state of the container before it's run.
+
+Dockerfile = a file that defines the image; Volume = a directory on the host OS which can be exposed to containers (without including it in the docker image.)
+
 Docker Compose - a technology for managing interdependent docker containers. Terms: service = an abstraction layer that wraps around a Dockerfile to define anything unusual the docker daemon needs to know when operating on that Dockerfile.
+
 Express-Gateway - a very well-designed and fully featured node.js project for configuring microservice gateways. The implementation runs on Express, a web server framework for node.js which serves requests through a very efficient event loop architecture. Express-Gateway uses configuration files to control behavior (which means you can use this project without knowing a lick of node.js--just read their documentation here: https://www.express-gateway.io/docs/configuration/gateway.config.yml/)
 
 # How to expose your own microservices (using the "dummy.py" example.)
