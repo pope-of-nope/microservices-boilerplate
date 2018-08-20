@@ -29,11 +29,29 @@ Start the server:
 >>     make[1]: Leaving directory '~/microservices-boilerplate'
 
 Test locally:
->   	make test
+>   	$ make test
+>>     ...
+>>     cd docker-compose && sudo docker-compose ps
+>>               Name                        Command               State           Ports
+>>     ------------------------------------------------------------------------------------------
+>>     docker-compose_dummy_1     gunicorn --bind=dummy:5000 ...   Up      5000/tcp
+>>     docker-compose_gateway_1   npm start                        Up      0.0.0.0:8080->8080/tcp
+>>     curl http://localhost:8080/ip
+>>     {
+>>       "origin": "34.193.26.96"
+>>     }
+>>     curl http://localhost:8080/dummy
+>>     {"status":"okay"}
 
 Test remotely:
 >  		http://<your-hostname-or-ip-address>:8080/ip
 >  		http://<your-hostname-or-ip-address>:8080/dummy
 
 Stop the server:
->			make stop
+>			$ make stop
+>>     cd docker-compose && sudo docker-compose down
+>>     Stopping docker-compose_dummy_1   ... done
+>>     Stopping docker-compose_gateway_1 ... done
+>>     Removing docker-compose_dummy_1   ... done
+>>     Removing docker-compose_gateway_1 ... done
+>>     Removing network docker-compose_main
