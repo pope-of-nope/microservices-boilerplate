@@ -4,7 +4,7 @@ from models import Collection, Document
 
 def URL(path):
     # HOST = "http://localhost:5000/documents/api"
-    HOST = "http://127.0.0.1:5000/"
+    HOST = "http://127.0.0.1:5001/"
     return "{host}/{path}".format(host=HOST.rstrip("/"), path=path.lstrip("/"))
 
 
