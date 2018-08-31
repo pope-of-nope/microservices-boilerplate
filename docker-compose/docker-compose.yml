@@ -16,5 +16,12 @@ services:
     networks:
       main:
 
+  restless:
+    build: ./services/flask-restless-example
+    # command: gunicorn main.wsgi --bind dummy:5000 -w 4
+    command: gunicorn --bind=restless:5000 -w 4 server:app
+    networks:
+      main:
+
 networks:
   main:

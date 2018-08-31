@@ -3,18 +3,26 @@ http:
 admin:
   port: 9876
   hostname: localhost
+
 apiEndpoints:
   api:
-    host: localhost
+    host: '*'
     paths: '/ip'
   dummy:
-    host: localhost
+    host: '*'
     paths: '/dummy'
+  restless:
+    host: '*'
+    paths: '/restless/api'
+
 serviceEndpoints:
   httpbin:
     url: 'https://httpbin.org'
   dummy:
     url: 'http://localhost:5000'
+  restless:
+    url: 'http://restless:5001'
+
 policies:
   - basic-auth
   - cors
@@ -24,29 +32,31 @@ policies:
   - oauth2
   - proxy
   - rate-limit
+
 pipelines:
   default:
     apiEndpoints:
       - api
     policies:
-    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
-    # - key-auth:
-      - log: # policy name
-          - action:    # array of condition/actions objects
-              message: ${req.method} ${req.originalUrl} # parameter for log action
       - proxy:
           - action:
-              serviceEndpoint: httpbin 
+              serviceEndpoint: httpbin
               changeOrigin: true
   dummy:
     apiEndpoints:
       - dummy
     policies:
-      - log: # policy name
-          - action:    # array of condition/actions objects
-              message: ${req.method} ${req.originalUrl} # parameter for log action
       - proxy:
         - action:
             serviceEndpoint: dummy
+            changeOrigin: true
+            stripPath: true
+  restless:
+    apiEndpoints:
+      - restless
+    policies:
+      - proxy:
+        - action:
+            serviceEndpoint: restless
             changeOrigin: true
             stripPath: true
