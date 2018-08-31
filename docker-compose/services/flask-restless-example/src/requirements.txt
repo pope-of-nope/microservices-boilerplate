@@ -1,0 +1,6 @@
+Flask-SQLAlchemy
+Flask-Restless
+gunicorn
+flask-cors
+#ujson
+#requests
